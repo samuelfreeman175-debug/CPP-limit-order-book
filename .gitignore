@@ -1,0 +1,12 @@
+cat << 'EOF' > .gitignore
+# Compiled executables and object files
+main
+*.o
+*.out
+*.exe
+*.dSYM/
+
+# macOS and VS Code clutter
+.DS_Store
+.vscode/
+EOF
