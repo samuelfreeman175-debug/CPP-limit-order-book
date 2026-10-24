@@ -39,6 +39,7 @@ int main() {
     std::cout << "All order tests #2 passes" << std::endl;
 
     OrderBook myOrderBook{};
+    TradeLogger Logger{"trades.csv"};
     Trades trade1 = myOrderBook.addOrder(std::make_shared<Order>(1, OrderType::GoodTillCancel, Side::Buy, 100, 50));
     Trades trade2 = myOrderBook.addOrder(std::make_shared<Order>(2, OrderType::GoodTillCancel, Side::Sell, 110, 50));
 
@@ -62,6 +63,8 @@ int main() {
     OrderBook myOrderBook2{};
     Trades trade3 = myOrderBook2.addOrder(std::make_shared<Order>(2, OrderType::GoodTillCancel, Side::Sell, 110, 50));
     Trades trade4 = myOrderBook2.addOrder(std::make_shared<Order>(3, OrderType::GoodTillCancel, Side::Buy, 110, 30));
+    Logger.log(trade4);
+    assert(trade4[0].getTimestamp() > 0);
 
     assert(myOrderBook2.Size() == 1);
     assert(trade4[0].getBidTrade().OrderID_ == 3);
@@ -71,11 +74,16 @@ int main() {
     std::cout << "All orderbook tests #2 passes" << std::endl;
 
     Trades trade5 = myOrderBook2.addOrder(std::make_shared<Order>(4, OrderType::FillandKill, Side::Buy, 105, 10));
-    
+    Logger.log(trade5);
+    assert(trade5[0].getTimestamp() > 0);
+
+
     assert(trade5.empty());
     assert(myOrderBook2.Size() == 1);
 
     Trades trade6 = myOrderBook2.addOrder(std::make_shared<Order>(5, OrderType::FillandKill, Side::Buy, 110, 50));
+    Logger.log(trade6);
+    assert(trade6[0].getTimestamp() > 0);
 
     assert(trade6.size() == 1);
     assert(trade6[0].getBidTrade().Quantity_ == 20);
@@ -87,10 +95,15 @@ int main() {
     Trades trade8 = myOrderBook2.addOrder(std::make_shared<Order>(7, OrderType::GoodTillCancel, Side::Sell, 105, 25));
 
     Trades trade9 = myOrderBook2.modifyOrder(OrderModify{6, Side::Buy, 105, 25});
+    Logger.log(trade9);
+    assert(trade9[0].getTimestamp() > 0);
+
     assert(trade9.size() == 1);
     assert(myOrderBook2.Size() == 0);
 
     std::cout << "All orderbook tests #4 passes" << std::endl;
+
+
 
 
 

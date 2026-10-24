@@ -18,6 +18,7 @@ enum class Side {
 using Price = std::int32_t;
 using Quantity = std::uint32_t;
 using OrderID = std::uint64_t;
+using Timestamp = std::int64_t;
 
 struct LevelInfo {
     Price price_;
