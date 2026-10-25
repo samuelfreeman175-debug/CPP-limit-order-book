@@ -6,7 +6,10 @@
 enum class OrderType {
 
     GoodTillCancel,
-    FillandKill
+    FillandKill,
+    FillorKill,
+    Market,
+    GoodForDay
 };
 
 enum class Side {
@@ -18,7 +21,9 @@ enum class Side {
 using Price = std::int32_t;
 using Quantity = std::uint32_t;
 using OrderID = std::uint64_t;
+using OrderIDs = std::vector<OrderID>;
 using Timestamp = std::int64_t;
+
 
 struct LevelInfo {
     Price price_;

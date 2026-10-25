@@ -1,5 +1,6 @@
 #pragma once
 #include "types.h"
+#include "constants.h"
 #include <stdexcept>
 #include <list>
 #include <memory>
@@ -16,6 +17,9 @@ class Order {
                 throw std::invalid_argument("Quantity cannot be 0");   
             }
         }
+
+        Order(OrderID orderID, Side side, Quantity quantity)
+        :  Order(orderID, OrderType::Market, side, Constants::InvalidPrice, quantity) {}
 
         OrderID getOrderID() const {
             return OrderID_;
@@ -47,6 +51,14 @@ class Order {
 
         bool isFilled() const {
             return remainingQuantity_ == 0;
+        }
+
+        void ToGoodTillCancel(Price price) {
+            if (OrderType_ != OrderType::Market) {
+                throw std::logic_error("This is not a Market Order.");
+            }
+            Price_ = price;
+            OrderType_ = OrderType::GoodTillCancel;
         }
     
         void fill(Quantity quantity) {
@@ -105,3 +117,5 @@ class OrderModify {
         Price Price_{};
         Quantity Quantity_{};
 };
+using OrderModifies = std::vector<OrderModify>;
+

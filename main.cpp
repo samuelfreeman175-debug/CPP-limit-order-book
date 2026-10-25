@@ -75,8 +75,6 @@ int main() {
 
     Trades trade5 = myOrderBook2.addOrder(std::make_shared<Order>(4, OrderType::FillandKill, Side::Buy, 105, 10));
     Logger.log(trade5);
-    assert(trade5[0].getTimestamp() > 0);
-
 
     assert(trade5.empty());
     assert(myOrderBook2.Size() == 1);

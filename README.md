@@ -50,7 +50,7 @@ Planned features are grouped into three phases. The checkboxes below indicate wo
 
 ### Phase 1: Order Types and Book Mechanics
 
-- [ ] **Market orders:** Execute immediately against resting liquidity at the best available prices.
+- [✅] **Market orders:** Execute immediately against resting liquidity at the best available prices.
 - [ ] **Time-in-force (TIF) conditions:** Add Immediate-or-Cancel (IOC), Fill-or-Kill (FOK), and Good-Till-Cancelled (GTC) behaviour.
 - [ ] **Order modification (cancel/replace):** Support price and quantity changes, preserving queue priority when quantity is reduced where the matching rules permit.
 - [ ] **Stop and iceberg orders:** Add conditional trigger orders and separate displayed and hidden quantities.
