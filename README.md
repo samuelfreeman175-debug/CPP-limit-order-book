@@ -22,12 +22,12 @@ A foundational **Limit Order Book (LOB) and matching engine** written in modern 
 
 ## Build and Run
 
-You will need a C++20-compatible compiler, such as `clang++` or `g++`.
+You will need a C++26-compatible compiler, such as `clang++` or `g++`.
 
 From the project root, compile the project with Clang:
 
 ```bash
-clang++ -std=c++20 -O3 main.cpp -o main
+clang++ -std=c++26 -O3 main.cpp -o main
 ```
 
 Run the executable:
@@ -39,7 +39,7 @@ Run the executable:
 For development, you may prefer a build with additional warnings enabled:
 
 ```bash
-clang++ -std=c++20 -Wall -Wextra -Wpedantic -g main.cpp -o main
+clang++ -std=c++26 -Wall -Wextra -Wpedantic -g main.cpp -o main
 ```
 
 The commands above assume the current implementation can be built from `main.cpp` and its included headers. Add any additional `.cpp` source files to the compile command if the project is split into multiple translation units later.
